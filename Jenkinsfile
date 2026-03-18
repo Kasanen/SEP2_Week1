@@ -16,17 +16,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                cmd 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                cmd 'mvn test'
             }
         }
         stage('Code Coverage') {
             steps {
-                sh 'mvn jacoco:report'
+                cmd 'mvn jacoco:report'
             }
         }
         stage('Publish Test Results') {
