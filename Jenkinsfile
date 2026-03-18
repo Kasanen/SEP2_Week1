@@ -4,29 +4,29 @@ pipeline {
             // Define Docker Hub credentials ID
             DOCKERHUB_CREDENTIALS_ID = 'Docker_Hub'
             // Define Docker Hub repository name
-            DOCKERHUB_REPO = 'amirdirin/sep2_week1_inclass_demo'
+            DOCKERHUB_REPO = 'kak3r/sep2_week1'
             // Define Docker image tag
             DOCKER_IMAGE_TAG = 'latest'
         }
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ADirin/SEP2_Week1_lectureDemo.git'
+                git 'https://github.com/Kasanen/SEP2_Week1.git'
             }
         }
         stage('Build') {
             steps {
-                cmd 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
-                cmd 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Code Coverage') {
             steps {
-                cmd 'mvn jacoco:report'
+                bat 'mvn jacoco:report'
             }
         }
         stage('Publish Test Results') {
